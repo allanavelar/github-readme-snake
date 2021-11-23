@@ -11,9 +11,12 @@ import { generateContributionSnake } from "./generateContributionSnake";
       gif: core.getInput("gif_out_path"),
     };
 
+    let drawOptions = JSON.parse(core.getInput("drawOpts") || '{}');
+
     const { svg, gif } = await generateContributionSnake(
       userName,
-      format as any
+      format as any,
+      drawOptions
     );
 
     if (svg) {

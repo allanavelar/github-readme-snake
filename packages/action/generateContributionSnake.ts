@@ -8,7 +8,8 @@ import { getPathToPose } from "@snk/solver/getPathToPose";
 
 export const generateContributionSnake = async (
   userName: string,
-  format: { svg?: boolean; gif?: boolean }
+  format: { svg?: boolean; gif?: boolean },
+  drawOpts?: {}
 ) => {
   console.log("🎣 fetching github user contribution");
   const { cells, colorScheme } = await getGithubUserContribution(userName);
@@ -16,7 +17,7 @@ export const generateContributionSnake = async (
   const grid = userContributionToGrid(cells, colorScheme);
   const snake = snake4;
 
-  const drawOptions = {
+  const drawOptions = {...{
     sizeBorderRadius: 2,
     sizeCell: 16,
     sizeDot: 12,
@@ -29,7 +30,7 @@ export const generateContributionSnake = async (
       colorEmpty: "#161b22",
       colorDots: { 1: "#01311f", 2: "#034525", 3: "#0f6d31", 4: "#00c647" },
     },
-  };
+  }, ...drawOpts};
 
   const gifOptions = { frameDuration: 100, step: 1 };
 

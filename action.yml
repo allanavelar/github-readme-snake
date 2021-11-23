@@ -4,7 +4,7 @@ author: "platane"
 
 runs:
   using: "docker"
-  image: "docker://platane/snk:latest"
+  image: "docker://allanavelar/github-readme-snake:latest"
 
 inputs:
   github_user_name:
@@ -16,6 +16,10 @@ inputs:
     default: null
   svg_out_path:
     description: "path of the generated svg file. If left empty, the svg file will not be generated."
+    required: false
+    default: null
+  drawOpts:
+    description: "change default draw options defined in generateContributionSnake.ts"
     required: false
     default: null
 
